@@ -309,7 +309,7 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
     messageElement.innerHTML = '';
     messageElement.appendChild(image);
   } else if(text === `I don't know`){
-    alert('Hi there')
+    console.log(text);
   }
   // Show the card fading-in and scroll to view the new message.
   setTimeout(function() {div.classList.add('visible')}, 1);
