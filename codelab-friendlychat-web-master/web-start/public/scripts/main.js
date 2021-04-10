@@ -28,7 +28,7 @@ function signOut() {
   firebase.auth().signOut();
 }
 
-// Initiate firebase auth.
+
 // Initiate Firebase Auth.
 function initFirebaseAuth() {
   // Listen to auth state changes.
