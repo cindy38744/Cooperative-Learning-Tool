@@ -85,30 +85,16 @@ function loadMessages() {
   });
 }
 
-// Saves a new message containing an image in Firebase.
-// This first saves the image in Firebase storage.
-function saveImageMessage(file) {
-  // 1 - We add a message with a loading icon that will get updated with the shared image.
-  firebase.firestore().collection('messages').add({
+// Saves a new message to your Cloud Firestore database.
+function saveMessage(messageText) {
+  // Add a new message entry to the database.
+  return firebase.firestore().collection('messages').add({
     name: getUserName(),
-    imageUrl: LOADING_IMAGE_URL,
+    text: messageText,
     profilePicUrl: getProfilePicUrl(),
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  }).then(function(messageRef) {
-    // 2 - Upload the image to Cloud Storage.
-    var filePath = firebase.auth().currentUser.uid + '/' + messageRef.id + '/' + file.name;
-    return firebase.storage().ref(filePath).put(file).then(function(fileSnapshot) {
-      // 3 - Generate a public URL for the file.
-      return fileSnapshot.ref.getDownloadURL().then((url) => {
-        // 4 - Update the chat message placeholder with the image's URL.
-        return messageRef.update({
-          imageUrl: url,
-          storageUri: fileSnapshot.metadata.fullPath
-        });
-      });
-    });
   }).catch(function(error) {
-    console.error('There was an error uploading a file to Cloud Storage:', error);
+    console.error('Error writing new message to database', error);
   });
 }
 
