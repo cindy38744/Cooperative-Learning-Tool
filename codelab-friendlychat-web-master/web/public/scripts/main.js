@@ -56,7 +56,8 @@ function saveMessage(messageText) {
     name: getUserName(),
     text: messageText,
     profilePicUrl: getProfilePicUrl(),
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    module: 11
   }).catch(function(error) {
     console.error('Error writing new message to Firebase Database', error);
   });
@@ -74,8 +75,9 @@ function loadMessages() {
         deleteMessage(change.doc.id);
       } else {
         var message = change.doc.data();
+        console.log('displayMessage')
         displayMessage(change.doc.id, message.timestamp, message.name,
-                      message.text, message.profilePicUrl, message.imageUrl);
+                      message.text, message.profilePicUrl, message.imageUrl, message.module !=11);
       }
     });
   });
@@ -295,9 +297,13 @@ function createAndInsertMessage(id, timestamp) {
 }
 
 // Displays a Message in the UI.
-function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
-  var div = document.getElementById(id) || createAndInsertMessage(id, timestamp);
+function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
 
+  if (hidden) {
+    return 
+  }
+
+  var div = document.getElementById(id) || createAndInsertMessage(id, timestamp);
   // profile picture
   if (picUrl) {
     div.querySelector('.pic').style.backgroundImage = 'url(' + addSizeToGoogleProfilePic(picUrl) + ')';
