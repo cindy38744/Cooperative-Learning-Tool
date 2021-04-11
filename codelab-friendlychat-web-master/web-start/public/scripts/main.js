@@ -297,9 +297,13 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
   var messageElement = div.querySelector('.message');
 
   if (text) { // If the message is text.
+    if(text === `I don't know`){
+alert('HiHiHi')
+    } 
     messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
+    
   } else if (imageUrl) { // If the message is an image.
     var image = document.createElement('img');
     image.addEventListener('load', function() {
@@ -308,8 +312,6 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
     image.src = imageUrl + '&' + new Date().getTime();
     messageElement.innerHTML = '';
     messageElement.appendChild(image);
-  } else if(text === `I don't know`){
-    console.log(text);
   }
   // Show the card fading-in and scroll to view the new message.
   setTimeout(function() {div.classList.add('visible')}, 1);
