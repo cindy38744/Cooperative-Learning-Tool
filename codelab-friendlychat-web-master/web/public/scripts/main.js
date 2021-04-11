@@ -277,7 +277,6 @@ var MESSAGE_TEMPLATE =
   '<div class="message-container">' +
   '<div class="spacing"><div class="pic"></div></div>' +
   '<div class="message"></div>' +
-  '<div class="hint"></div>' +
   '<div class="name"></div>' +
   "</div>";
 
@@ -364,12 +363,11 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
 
   div.querySelector(".name").textContent = name;
   var messageElement = div.querySelector(".message");
-  var hintElement = div.querySelector(".hint");
 
   if (text) {
     // If the message is text.
-    messageElement.textContent = text;
-    hintElement.textContent = "123";
+    messageElement.textContent = text + "123";
+
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, "<br>");
   } else if (imageUrl) {
