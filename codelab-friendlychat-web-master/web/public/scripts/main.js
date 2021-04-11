@@ -189,13 +189,28 @@ function onMessageFormSubmit(e) {
       resetMaterialTextfield(messageInputElement);
       toggleButton();
     });
-
+    botMessage("Say hello to your partner, if you need my assistance, say [help]");
     if (messageInputElement.value.includes("help")){
       //call help function 
-        botMessage("Are you the tutor or are you being tutored?");
+        botMessage("Are you the tutor or are you the tutee");
+        if(messageInputElement.value.includes("tutor")){
+          //troubleshoot the issue
+            botMessage("What is your problem?")}
+        else if(messageInputElement.value.includes("tutee")){
+  //troubleshoot the issue
+  botMessage("What is your problem?")} 
+            }
+    } else if 
+    (messageInputElement.value.includes("hello")){
+      //troubleshoot the issue
+        botMessage("Ask your tutee whether they finished the modules about compound interest");
+    } else if 
+    (messageInputElement.value.includes("finish")){
+      //troubleshoot the issue
+        botMessage("Ask your tutee whether they made a mind map and upload the image");
     }
   }
-}
+
 
 //Gives the student a hint message
 function getHint(){
