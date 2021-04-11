@@ -63,6 +63,7 @@ function saveMessage(messageText) {
       profilePicUrl: getProfilePicUrl(),
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       module: 11,
+      hint: "this is a hint",
     })
     .catch(function (error) {
       console.error("Error writing new message to Firebase Database", error);
@@ -85,12 +86,14 @@ function loadMessages() {
         deleteMessage(change.doc.id);
       } else {
         var message = change.doc.data();
+        let hint = "this is a hint";
         console.log("displayMessage");
         displayMessage(
           change.doc.id,
           message.timestamp,
           message.name,
           message.text,
+          hint,
           message.profilePicUrl,
           message.imageUrl,
           message.module != 11
@@ -277,6 +280,7 @@ var MESSAGE_TEMPLATE =
   '<div class="message-container">' +
   '<div class="spacing"><div class="pic"></div></div>' +
   '<div class="message"></div>' +
+  '<div class="hint"></div>' +
   '<div class="name"></div>' +
   "</div>";
 
@@ -304,13 +308,6 @@ function createAndInsertMessage(id, timestamp) {
   const container = document.createElement("div");
   container.innerHTML = MESSAGE_TEMPLATE;
   const div = container.firstChild;
-  div.setAttribute("id", id);
-}
-
-function createHint() {
-  const hintContainer = document.createElement("div");
-  hintContainer.innerHTML = HINT_TEMPLATE;
-  const div = hintContainer.appendChild;
   div.setAttribute("id", id);
 }
 
@@ -348,7 +345,16 @@ if (existingMessages.length === 0) {
 return div;
 
 // Displays a Message in the UI.
-function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
+function displayMessage(
+  id,
+  timestamp,
+  name,
+  text,
+  hint,
+  picUrl,
+  imageUrl,
+  hidden
+) {
   if (hidden) {
     return;
   }
@@ -363,13 +369,14 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
 
   div.querySelector(".name").textContent = name;
   var messageElement = div.querySelector(".message");
+  var hintElement = div.querySelector(".hint");
 
   if (text) {
     // If the message is text.
-    messageElement.textContent = text + "123";
-
+    messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, "<br>");
+    hintElement.textContent = hint;
   } else if (imageUrl) {
     // If the message is an image.
     var image = document.createElement("img");
