@@ -297,16 +297,10 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
   var messageElement = div.querySelector('.message');
 
   if (text) { // If the message is text.
-    if(text === 'no'){
-alert('HiHiHi')
-messageElement.textContent = text;
-// Replace all line breaks by <br>.
-messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-    } else{
+    alert('Warning!')
     messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-    }
   } else if (imageUrl) { // If the message is an image.
     var image = document.createElement('img');
     image.addEventListener('load', function() {
