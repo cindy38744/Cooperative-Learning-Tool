@@ -224,6 +224,14 @@ var MESSAGE_TEMPLATE =
       '<div class="name"></div>' +
     '</div>';
 
+// Template for hint.
+var HINT_TEMPLATE =
+'<div class="message-container">' +
+  '<div class="spacing"><div class="pic"></div></div>' +
+  '<div class="message"></div>' +
+  '<div class="name"></div>' +
+'</div>';
+
 // Adds a size to Google Profile pics URLs.
 function addSizeToGoogleProfilePic(url) {
   if (url.indexOf('googleusercontent.com') !== -1 && url.indexOf('?') === -1) {
@@ -296,9 +304,8 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
   div.querySelector('.name').textContent = name;
   var messageElement = div.querySelector('.message');
 
-  if (text) { // If the message is text.
-  
-    messageElement.textContent = 123;
+  if (text) { // If the message is text.  
+    messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
   } else if (imageUrl) { // If the message is an image.
