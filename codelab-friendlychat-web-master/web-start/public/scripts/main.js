@@ -297,8 +297,8 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl) {
   var messageElement = div.querySelector('.message');
 
   if (text) { // If the message is text.
-    alert('Warning!')
-    messageElement.textContent = text;
+  
+    messageElement.textContent = 123;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
   } else if (imageUrl) { // If the message is an image.
