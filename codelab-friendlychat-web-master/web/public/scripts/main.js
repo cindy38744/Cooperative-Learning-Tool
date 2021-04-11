@@ -282,11 +282,7 @@ var MESSAGE_TEMPLATE =
 
 // Template for hints.
 var HINT_TEMPLATE =
-  '<div class="message-container">' +
-  '<div class="spacing"><div class="pic"></div></div>' +
-  '<div class="hint"></div>' +
-  '<div class="name"></div>' +
-  "</div>";
+  '<div class="message-container">' + '<div class="hint"></div>' + "</div>";
 
 // Adds a size to Google Profile pics URLs.
 function addSizeToGoogleProfilePic(url) {
@@ -312,12 +308,14 @@ function createAndInsertMessage(id, timestamp) {
   const container = document.createElement("div");
   container.innerHTML = MESSAGE_TEMPLATE;
   const div = container.firstChild;
-  div.setAttribute("id", id);
+  div.setAttribute("id", id);}
 
   function createHint() {
     const hintContainer = document.createElement("div");
     hintContainer.innerHTML = HINT_TEMPLATE;
-  }
+    const div = hintContainer.appendChild;
+    div.setAttribute("id", id);}
+  
 
   // If timestamp is null, assume we've gotten a brand new message.
   // https://stackoverflow.com/a/47781432/4816918
@@ -370,10 +368,10 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
   div.querySelector(".name").textContent = name;
   var messageElement = div.querySelector(".message");
   var hintElement = div.querySelector(".hint");
+  hintElement.textContent = "this is a hint";
 
   if (text) {
     // If the message is text.
-    hintElement.textContent = "this is a hint";
     messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, "<br>");
