@@ -359,6 +359,14 @@ function displayMessage(id, timestamp, name, text, picUrl, imageUrl, hidden) {
 
   if (text) {
     console.log(typeof text, text);
+    if (text === "no") {
+      alert("NO");
+      messageElement.textContent = text;
+      messageElement.innerHTML = messageElement.innerHTML.replace(
+        /\n/g,
+        "<br>"
+      );
+    }
     // If the message is text.
     messageElement.textContent = text;
     // Replace all line breaks by <br>.
