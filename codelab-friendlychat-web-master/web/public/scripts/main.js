@@ -191,28 +191,22 @@ function onMessageFormSubmit(e) {
       toggleButton();
     });
 
-  if (messageInputElement.value.includes("help")){
-      //call help function 
-    botMessage("Try to think about the difference between simple interest and compound interest");
-    break
-    } else if 
-    (messageInputElement.value.includes("hello")){
+    if(messageInputElement.value.includes("help")){
+      botMessage("Ask your tutee whether they finished the modules about compound interest");
+    } else if (messageInputElement.value.includes("hello")){
       //start the tutoring
-        botMessage("Ask your tutee whether they finished the modules about compound interest");
-        if(messageInputElement.value.includes("finish")){
-          //continue the conversation
-            botMessage("Ask your tutee whether they made a mind map and upload the image, when you are ready for tutoring, say [I'm ready]");
-            break
-        } else if 
-        (messageInputElement.value.includes("I'm ready")){
-          //give the hints
-            botMessage("Please wait for the tutee to tell you what they know before explaining it to them");
-            botMessage("Please say [done teaching] to finish the tutoring");
-            break
-          } else if(messageInputElement.value.includes("done teaching")) {
-              botMessage("You might remind your peer to add new connections between topics that did not have them before.")
-            }
-          }
+      botMessage("Ask your tutee whether they finished the modules about compound interest");
+    } else if(messageInputElement.value.includes("finish")){
+      //continue the conversation
+      botMessage("Ask your tutee whether they made a mind map and upload the image, when you are ready for tutoring, say [I'm ready]");
+    } else if (messageInputElement.value.includes("I'm ready")){
+      //give the hints
+      botMessage("Please wait for the tutee to tell you what they know before explaining it to them");
+      botMessage("Please say [done teaching] to finish the tutoring");
+    } else if(messageInputElement.value.includes("done teaching")) {
+      botMessage("You might remind your peer to add new connections between topics that did not have them before.")
+    }
+    
     } 
   }
 
