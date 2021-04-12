@@ -206,20 +206,20 @@ function onMessageFormSubmit(e) {
 
     if(messageInputElement.value.includes("hello")){
       botMessage("Ask your tutee whether they finished the modules about compound interest");
-       setTimeout(tuteeMessage("Hi, I'm Justin and I am your tutee today!"), 3000)
+       setTimeout(tuteeMessage("Hi, I'm Justin and I am your tutee today!"), 5000)
     } else if (messageInputElement.value.includes("help")){
       //start the tutoring
       botMessage("Think about how is difference from simple interest and compound interest");
     } else if (messageInputElement.value.includes("difference between simple interest and compound interest")){
       tuteeMessage("...I think they are different because they grow in different ways?")
     } else if (messageInputElement.value.includes("Do you finish the modules?")){
-      setTimeout(tuteeMessage("Yes, I finished the two modules"), 2000)
+      setTimeout(tuteeMessage("Yes, I finished the two modules"), 5000)
       botMessage("if done, say [finish], if you have questions, say [help]")
-    } else if(messageInputElement.value = "finish"){
+    } else if(messageInputElement.value.includes("finish")){
       //continue the conversation
       botMessage("Ask your tutee whether they made a mind map and upload the image");
     } else if (messageInputElement.value.includes("Do you make a mind map?")){
-      setTimeout(tuteeMessage("Yep, I have one on hands"), 2000)
+      setTimeout(tuteeMessage("Yep, I have one on hands"), 5000)
       botMessage("When you are ready for tutoring, say [I'm ready]");
     } else if (messageInputElement.value.includes("I'm ready")){
       //give the hints
