@@ -218,7 +218,7 @@ function onMessageFormSubmit(e) {
     } else if(messageInputElement.value = "finish"){
       //continue the conversation
       botMessage("Ask your tutee whether they made a mind map and upload the image");
-    } else if (messageInputElement.value.includes("Do you make a mind map")){
+    } else if (messageInputElement.value.includes("Do you make a mind map?")){
       setTimeout(tuteeMessage("Yep, I have one on hands"), 2000)
       botMessage("When you are ready for tutoring, say [I'm ready]");
     } else if (messageInputElement.value.includes("I'm ready")){
