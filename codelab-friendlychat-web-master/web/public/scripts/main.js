@@ -191,11 +191,11 @@ function onMessageFormSubmit(e) {
       toggleButton();
     });
 
-    if(messageInputElement.value.includes("help")){
-      botMessage("Ask your tutee whether they finished the modules about compound interest");
-    } else if (messageInputElement.value.includes("hello")){
+    if(messageInputElement.value.includes("hello")){
+      botMessage("Ask your tutee whether they finished the modules about compound interest, if done, say [finish], if you have questions, say [help]");
+    } else if (messageInputElement.value.includes("help")){
       //start the tutoring
-      botMessage("Ask your tutee whether they finished the modules about compound interest");
+      botMessage("Think about how is difference from simple interest and compound interest");
     } else if(messageInputElement.value.includes("finish")){
       //continue the conversation
       botMessage("Ask your tutee whether they made a mind map and upload the image, when you are ready for tutoring, say [I'm ready]");
