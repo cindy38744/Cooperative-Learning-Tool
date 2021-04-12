@@ -71,7 +71,7 @@ function saveMessage(messageText) {
 function botMessage(messageText) {
   // Add a new message entry to the Firebase database.
   return firebase.firestore().collection('messages').add({
-    name: "Tutor",
+    name: "DR.WU",
     text: messageText,
     profilePicUrl: "https://twemoji.maxcdn.com/2/svg/1f916.svg",
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -195,20 +195,33 @@ function onMessageFormSubmit(e) {
         botMessage("Are you the tutor or are you the tutee");
         if(messageInputElement.value.includes("tutor")){
           //troubleshoot the issue
-            botMessage("What is your problem?")}
+            botMessage("What is your problem?")} 
+            if(messageInputElement.value.includes("123")){
+botMessage("Figure it out yourself")
+            }
+        
         else if(messageInputElement.value.includes("tutee")){
   //troubleshoot the issue
-  botMessage("What is your problem?")} 
-            }
+  botMessage("What is your problem?")} }
+  if(messageInputElement.value.includes("123")){
+    botMessage("Figure it out yourself")}
     } else if 
     (messageInputElement.value.includes("hello")){
       //troubleshoot the issue
         botMessage("Ask your tutee whether they finished the modules about compound interest");
-    } else if 
-    (messageInputElement.value.includes("finish")){
-      //troubleshoot the issue
-        botMessage("Ask your tutee whether they made a mind map and upload the image");
-    }
+        if(messageInputElement.value.includes("finish")){
+          //troubleshoot the issue
+            botMessage("Ask your tutee whether they made a mind map and upload the image, when you are ready for tutoring, say [I'm ready]");
+        } else if 
+        (messageInputElement.value.includes("I'm ready")){
+          //troubleshoot the issue
+            botMessage("Please wait for the tutee to tell you what they know before explaining it to them");
+            botMessage("Please say [done teaching] to finish the tutoring");
+            if(messageInputElement.value.includes("done teaching")){
+              botMessage("You might remind your peer to add new connections between topics that did not have them before.")
+            }
+          }
+    } 
   }
 
 
