@@ -178,7 +178,6 @@ function onMediaFileSelected(event) {
   }
 }
 
-botMessage("Say hello to your partner, if you need my assistance, say [help]");
 
 // Triggered when the send new message form is submitted.
 function onMessageFormSubmit(e) {
@@ -191,7 +190,7 @@ function onMessageFormSubmit(e) {
       resetMaterialTextfield(messageInputElement);
       toggleButton();
     });
-
+    botMessage("Say hello to your partner, if you need my assistance, say [help]");
     if (messageInputElement.value.includes("help")){
       //call help function 
     botMessage("Try to think about the difference between simple interest and compound interest");
