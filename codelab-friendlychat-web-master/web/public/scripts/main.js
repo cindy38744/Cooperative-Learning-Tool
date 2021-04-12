@@ -205,7 +205,7 @@ function onMessageFormSubmit(e) {
     });
 
     if(messageInputElement.value.includes("hello")){
-      botMessage("Ask your tutee whether they finished the modules about compound interest, if done, say [finish], if you have questions, say [help]");
+      botMessage("Ask your tutee whether they finished the modules about compound interest");
        setTimeout(tuteeMessage("Hi, I'm Justin and I am your tutee today!"), 3000)
     } else if (messageInputElement.value.includes("help")){
       //start the tutoring
@@ -214,6 +214,7 @@ function onMessageFormSubmit(e) {
       tuteeMessage("...I think they are different because they grow in different ways?")
     } else if (messageInputElement.value.includes("Do you finish the modules?")){
       setTimeout(tuteeMessage("Yes, I finished the two modules"), 2000)
+      botMessage("if done, say [finish], if you have questions, say [help]")
     } else if(messageInputElement.value = "finish"){
       //continue the conversation
       botMessage("Ask your tutee whether they made a mind map and upload the image");
